@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.daviaugusto.workshopmongodb.dto.PostDTO;
+
 
 @Document
 public class Post implements Serializable{
@@ -18,12 +20,12 @@ public class Post implements Serializable{
 	private Date data;
 	private String titulo;
 	private String corpo;
-	private User autor;
+	private PostDTO autor;
 	
 	public Post() {
 	}
 
-	public Post(String id, Date data, String titulo, String corpo, User autor) {
+	public Post(String id, Date data, String titulo, String corpo, PostDTO autor) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -64,11 +66,11 @@ public class Post implements Serializable{
 		this.corpo = corpo;
 	}
 
-	public User getAutor() {
+	public PostDTO getAutor() {
 		return autor;
 	}
 
-	public void setAutor(User autor) {
+	public void setAutor(PostDTO autor) {
 		this.autor = autor;
 	}
 

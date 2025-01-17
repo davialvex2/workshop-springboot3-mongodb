@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.daviaugusto.workshopmongodb.domain.Post;
 import com.daviaugusto.workshopmongodb.domain.User;
+import com.daviaugusto.workshopmongodb.dto.PostDTO;
 import com.daviaugusto.workshopmongodb.repositories.PostRepositoty;
 import com.daviaugusto.workshopmongodb.repositories.UserRepositoty;
 
@@ -39,13 +40,15 @@ public class TestConfig implements CommandLineRunner{
 		User suzy = new User(null, "Suzy Cristina", "suzy@gmail.com");
 		User maria = new User(null, "Maria Santos", "maria@gmail.com");
 		
-		Post post1 = new Post(null, sdf.parse("18/05/2023"), "Aniversário", "Parabens para mim, 18 anos", maria);
-		Post post2 = new Post(null, sdf.parse("15/03/2023"), "Receita de Bolo", "Coloque três chicaras de açucar, depois acrescente leite", suzy);
 		
 		repository.saveAll(Arrays.asList(daniel, suzy, maria, davi));
+		
+		Post post1 = new Post(null, sdf.parse("18/05/2023"), "Aniversário", "Parabens para mim, 18 anos", new PostDTO(maria));
+		Post post2 = new Post(null, sdf.parse("15/03/2023"), "Receita de Bolo", "Coloque três chicaras de açucar, depois acrescente leite", new PostDTO(suzy));
+		
+		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 		
-	
 	}
 
 }
