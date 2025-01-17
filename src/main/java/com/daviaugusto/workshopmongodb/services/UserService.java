@@ -32,15 +32,22 @@ public class UserService {
 	}
 	
 	public void delete(String id) {
-		User obj = findById(id);
-		if(obj != null) {
+		findById(id);
 		repository.deleteById(id);
-		}
-		else {
-			throw new ObjectNotFoundException("ID não encontrado");
-		}
+		
 	}
 	
+	public User updade(User obj) {
+		User newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repository.save(newObj);
+	}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+	}
+
 	public User fromDTO(UserDTO obj) {
 		return new User(obj.getId(), obj.getNome(), obj.getEmail());
 	}
