@@ -28,6 +28,7 @@ public class UserResource {
 	
 	@Autowired
 	private UserService service;
+
 	
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll(){
@@ -74,6 +75,5 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj.getPost());
 	}
 	
-
 }
  
