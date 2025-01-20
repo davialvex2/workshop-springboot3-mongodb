@@ -1,13 +1,16 @@
 package com.daviaugusto.workshopmongodb.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.daviaugusto.workshopmongodb.dto.CommentDTO;
 import com.daviaugusto.workshopmongodb.dto.PostDTO;
 
 
@@ -21,6 +24,8 @@ public class Post implements Serializable{
 	private String titulo;
 	private String corpo;
 	private PostDTO autor;
+	
+	private List<CommentDTO> comments = new ArrayList<>();
 	
 	public Post() {
 	}
@@ -72,6 +77,14 @@ public class Post implements Serializable{
 
 	public void setAutor(PostDTO autor) {
 		this.autor = autor;
+	}
+	
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
 	}
 
 	@Override
