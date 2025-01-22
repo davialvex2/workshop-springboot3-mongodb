@@ -12,8 +12,8 @@ import com.daviaugusto.workshopmongodb.domain.Post;
 import com.daviaugusto.workshopmongodb.domain.User;
 import com.daviaugusto.workshopmongodb.dto.CommentDTO;
 import com.daviaugusto.workshopmongodb.dto.PostDTO;
-import com.daviaugusto.workshopmongodb.repositories.PostRepositoty;
-import com.daviaugusto.workshopmongodb.repositories.UserRepositoty;
+import com.daviaugusto.workshopmongodb.repositories.PostRepository;
+import com.daviaugusto.workshopmongodb.repositories.UserRepository;
 
 
 
@@ -21,10 +21,10 @@ import com.daviaugusto.workshopmongodb.repositories.UserRepositoty;
 public class TestConfig implements CommandLineRunner{
 
 	@Autowired
-	private UserRepositoty repository;
+	private UserRepository repository;
 	
 	@Autowired
-	private PostRepositoty postRepository;
+	private PostRepository postRepository;
 	
 
 	@Override

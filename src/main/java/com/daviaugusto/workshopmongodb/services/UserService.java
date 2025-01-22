@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import com.daviaugusto.workshopmongodb.domain.User;
 import com.daviaugusto.workshopmongodb.dto.UserDTO;
 import com.daviaugusto.workshopmongodb.exception.ObjectNotFoundException;
-import com.daviaugusto.workshopmongodb.repositories.UserRepositoty;
+import com.daviaugusto.workshopmongodb.repositories.UserRepository;
 
 
 @Service
 public class UserService {
 	
 	@Autowired
-	private UserRepositoty repository;
+	private UserRepository repository;
 	
 	public List<User> findAll(){
 		return repository.findAll();
