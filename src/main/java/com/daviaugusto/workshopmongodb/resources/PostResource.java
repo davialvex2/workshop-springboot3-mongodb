@@ -5,6 +5,7 @@ package com.daviaugusto.workshopmongodb.resources;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,20 @@ public class PostResource {
 		}
 	
 	@GetMapping(value="/titlesearch")
- 	public ResponseEntity<List<Post>> findByTitulo(@RequestParam(defaultValue="") String text) {
+ 	public ResponseEntity<List<Post>> findByTitulo(@RequestParam(value ="text", defaultValue="") String text) {
 		text = URL.decodeParam(text);
 		List<Post> list = postService.findByTitle(text);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value="/fullbusca")
+ 	public ResponseEntity<List<Post>> fullBusca(@RequestParam(value ="text",defaultValue="") String text,
+ 			@RequestParam(value ="datamin",defaultValue="") String dataMin,
+ 			@RequestParam(value ="datamax", defaultValue="") String dataMax) {
+		text = URL.decodeParam(text);
+		Date min = URL.connvertDate(dataMin, new Date(0L));
+		Date max = URL.connvertDate(dataMax, new Date());
+		List<Post> list = postService.fullBusca(text, min, max);
 		return ResponseEntity.ok().body(list);
 	}
 }

@@ -1,6 +1,7 @@
 package com.daviaugusto.workshopmongodb.services;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,11 @@ public class PostService {
 	
 	public List<Post> findByTitle(String text){
 		return postRepository.findByTitulo(text);
+	}
+	
+	public List<Post> fullBusca(String text, Date dataMin, Date dataMax){
+		dataMax = new Date(dataMax.getTime() + 24 * 60 * 60 * 1000);
+		return postRepository.fullBusca(text, dataMin, dataMax);
 	}
 	
 }
